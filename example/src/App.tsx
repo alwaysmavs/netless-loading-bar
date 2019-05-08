@@ -1,62 +1,42 @@
 import * as React from "react";
-import SeekSlider from "@netless/seek-slider";
+import TopLoadingBar from "@netless/loading-bar";
 import "./App.less";
 
 export type AppStates = {
     currentTime: number;
-    progress: number;
-    test: boolean;
 };
 
 export default class App extends React.Component<{}, AppStates> {
+
+    private setInte: any;
     public constructor(props: {}) {
         super(props);
         this.state = {
             currentTime: 10,
-            progress: 0,
-            test: false,
         };
     }
 
 
     public componentDidMount(): void {
-        setInterval(() => {
+        this.setInte = setInterval(() => {
             this.setState({
-                currentTime: this.state.currentTime < 11150 ? this.state.currentTime + 10 : 0,
-            });
-        }, 100);
-        setInterval(() => {
-            this.setState({
-                progress: this.state.progress < 11150 ? this.state.progress + 20 : 0,
+                currentTime: this.state.currentTime < 100 ? this.state.currentTime + 1 : 0,
             });
         }, 100);
     }
 
+    public componentWillUnmount(): void {
+        clearInterval(this.setInte);
+    }
+
     private getSlider(): React.ReactNode {
-        return <SeekSlider
-            fullTime={11150}
-            thumbColor={"black"}
-            bufferColor={"#D8D8D8"}
-            sliderColor={"pink"}
-            sliderHoverColor={"#E3E3E3"}
-            currentTime={this.state.currentTime}
-            bufferProgress={this.state.progress}
-            onChange={(time: number, offsetTime: number) => {
-                this.setState({
-                    currentTime: time,
-                });
-            }}
-            offset={0}
-            limitTimeTooltipBySides={true}
-            secondsPrefix="00:00:"
-            minutesPrefix="00:"
-        />;
+        return <TopLoadingBar loadingPercent={this.state.currentTime}/>;
     }
 
     public render(): React.ReactNode {
         return (
             <div className="container">
-                <h1>React slider</h1>
+                <h1>React top loading bar</h1>
                 {this.getSlider()}
             </div>
         );

@@ -1,11 +1,11 @@
 {
-  "name": "seek-slider",
+  "name": "loading-bar",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "@netless/seek-slider": "link:.."
+    "@netless/loading-bar": "link:.."
   },
   "scripts": {
     "start": "react-app-rewired start --scripts-version react-scripts-ts",
