@@ -1,6 +1,7 @@
 {
-  "name": "@netless/loading-bar",
-  "version": "1.0.0",
+  "name": "@netless/react-loading-bar",
+  "version": "1.0.1",
+  "types": "dist/index.d.ts",
   "description": "a loading bar",
   "author": "wushuang",
   "license": "MIT",
